@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Formatter_prototype Plug-in
+Bundle-SymbolicName: formatter_prototype;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: jp.sourceforge.pdt_tools.formatter.prototype.FormatterPrototypePlugin
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.jface.text,org.eclipse.ui.forms,org.eclipse.php.core,org.eclipse.php.ui,org.eclipse.wst.sse.core,org.eclipse.wst.sse.ui,org.eclipse.wst.html.ui,org.eclipse.wst.xml.core,
+ org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

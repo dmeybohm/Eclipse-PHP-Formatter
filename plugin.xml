@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.php.ui.phpFormatterProcessor">
+      <processor
+            class="jp.sourceforge.pdt_tools.formatter.prototype.SimpleContentFormatter"
+            id="jp.sourceforge.pdt_tools.formatter.prototype.SimpleContentFormatter"
+            name="jp.sourceforge.pdt_tools.formatter.prototype.SimpleContentFormatter">
+      </processor>
+   </extension>
+   <extension
+         point="org.eclipse.php.ui.phpFormatterPrefBlock">
+      <block
+            class="jp.sourceforge.pdt_tools.formatter.prototype.SimpleFormatterConfigurationBlockWrapper"
+            id="jp.sourceforge.pdt_tools.formatter.prototype.SimpleFormatterConfigurationBlockWrapper"
+            name="jp.sourceforge.pdt_tools.formatter.prototype.SimpleFormatterConfigurationBlockWrapper">
+      </block>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="jp.sourceforge.pdt_tools.formatter.prototype.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferenceTransfer">
+      <transfer
+            id="jp.sourceforge.pdt_tools.formatter.prototype.transfer"
+            name="PDT Tools - Formatter Prototype">
+         <mapping
+               scope="instance">
+            <entry
+                  node="jp.sourceforge.pdt_tools.formatter.prototype">
+            </entry>
+         </mapping>
+      </transfer>
+   </extension>
+
+</plugin>
