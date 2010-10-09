@@ -363,6 +363,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 		public boolean fgArrayIndent = false;		// indent for array
 		public boolean fgAligned = false;			// already aligned
 		public boolean fgBlock = false;				// block statement (w/':')
+		public boolean fgCurlyExpr = false;			// curly expression $var->{'foo'.'bar'}
 		public int alignMax = 0;					// max item length
 		public int startIndex = -1;					// ( starting index
 
@@ -720,6 +721,11 @@ public class SimpleContentFormatter implements IContentFormatter {
 				if (scope.peek().type == PHPToken.PHP_VARIABLE) { //#16076
 					break;
 				}
+				getPrevToken(index - 2, true, prevToken);
+				if (prevToken.body.equals("->")) {
+					scope.peek().fgCurlyExpr = true;
+					break;
+				}
 				if (inConstantEncapsedString) {
 					break; //XXX 2010/04/09
 				}
@@ -762,6 +768,10 @@ public class SimpleContentFormatter implements IContentFormatter {
 				break;
 
 			case PHPToken.PHP_CURLY_CLOSE:
+				if (scope.peek().fgCurlyExpr) {
+					scope.peek().fgCurlyExpr = false;
+					break;
+				}
 				if (scope.peek().type == PHPToken.PHP_VARIABLE) { //#16076
 					scope.pop();
 					break;
