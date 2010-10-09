@@ -95,7 +95,9 @@ public class SimpleContentFormatter implements IContentFormatter {
 	private boolean prefEquateEleIfToElseif;
 	private boolean prefSimpleStatementInOneLine;
 	private boolean prefCompactEmptyBlock;
-
+	private boolean prefControlPreSpace = false;
+	private boolean prefCurlyOpenPreSpace = false;
+	private boolean prefCurlyClosePostSpace = false;
 	private boolean debugDump = false;
 
 	public void format(IDocument document, IRegion region) {
@@ -727,7 +729,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 				if (reqOpenBlock) {
 					reqOpenBlock = false;
 					indentLevel++;
-					reqPreSpace = true;
+					reqPreSpace = prefCurlyOpenPreSpace;
 					reqPostNewLine = true;
 					if (scope.peek().type == PHPToken.PHP_SWITCH) {
 						if (prefIndentCaseBlock) {
@@ -788,7 +790,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 						if (prefNewLineForCatch) {
 							reqPostNewLine = true;
 						} else {
-							reqPostSpace = true;
+							reqPostSpace = prefCurlyClosePostSpace;
 						}
 						scope.pop();
 						break;
@@ -808,7 +810,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 								if (prefNewLineForElse) {
 									reqPostNewLine = true;
 								} else {
-									reqPostSpace = true;
+									reqPostSpace = prefCurlyClosePostSpace;
 								}
 								terminate = false;
 								//XXX 2010/04/09
@@ -1315,7 +1317,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 			case PHPToken.PHP_TRY:
 			case PHPToken.PHP_CATCH:
 				scope.push(new ScopeUnit(token.type));
-				reqPostSpace = true;
+				reqPostSpace = prefControlPreSpace;
 				if (prefNewLineForTryCatch) {
 					reqOpenBlockNL = true;
 				} else {
@@ -1365,7 +1367,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 				} else {
 					reqOpenBlock = true;
 				}
-				reqPostSpace = true;
+				reqPostSpace = prefControlPreSpace;
 				break;
 
 			case PHPToken.PHP_ELSEIF:
@@ -1415,7 +1417,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 						reqOpenBlockNL = true;
 					} else {
 						reqOpenBlock = true;
-						reqPostSpace = true;
+						reqPostSpace = prefCurlyOpenPreSpace;
 					}
 					scope.peek().fgSingle = false;
 				}
