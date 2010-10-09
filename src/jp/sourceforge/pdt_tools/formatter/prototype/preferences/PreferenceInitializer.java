@@ -34,6 +34,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.SPACER_FOR_SHORTCUT, true);
 		store.setDefault(PreferenceConstants.SPACER_FOR_SHORTCUT_CLOSE, true);
 		store.setDefault(PreferenceConstants.SPACER_FOR_CAST, true);
+		store.setDefault(PreferenceConstants.SPACER_AFTER_CONTROL, true);
+		store.setDefault(PreferenceConstants.SPACER_BEFORE_CURLY, true);
+		store.setDefault(PreferenceConstants.SPACER_AFTER_CURLY, true);
 		store.setDefault(PreferenceConstants.LEAVE_BLANK_LINES1, true);
 		store.setDefault(PreferenceConstants.LEAVE_BLANK_LINES2, true);
 		store.setDefault(PreferenceConstants.LEAVE_BLANK_LINES3, true);
@@ -77,6 +80,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setToDefault(PreferenceConstants.SPACER_FOR_SHORTCUT);
 		store.setToDefault(PreferenceConstants.SPACER_FOR_SHORTCUT_CLOSE);
 		store.setToDefault(PreferenceConstants.SPACER_FOR_CAST);
+		store.setToDefault(PreferenceConstants.SPACER_AFTER_CONTROL);
+		store.setToDefault(PreferenceConstants.SPACER_BEFORE_CURLY);
+		store.setToDefault(PreferenceConstants.SPACER_AFTER_CURLY);
 		store.setToDefault(PreferenceConstants.LEAVE_BLANK_LINES1);
 		store.setToDefault(PreferenceConstants.LEAVE_BLANK_LINES2);
 		store.setToDefault(PreferenceConstants.LEAVE_BLANK_LINES3);
@@ -120,6 +126,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		copyBooleanValue(master, slave, PreferenceConstants.SPACER_FOR_SHORTCUT);
 		copyBooleanValue(master, slave, PreferenceConstants.SPACER_FOR_SHORTCUT_CLOSE);
 		copyBooleanValue(master, slave, PreferenceConstants.SPACER_FOR_CAST);
+		copyBooleanValue(master, slave, PreferenceConstants.SPACER_AFTER_CONTROL);
+		copyBooleanValue(master, slave, PreferenceConstants.SPACER_BEFORE_CURLY);
+		copyBooleanValue(master, slave, PreferenceConstants.SPACER_AFTER_CURLY);
 		copyBooleanValue(master, slave, PreferenceConstants.LEAVE_BLANK_LINES1);
 		copyBooleanValue(master, slave, PreferenceConstants.LEAVE_BLANK_LINES2);
 		copyBooleanValue(master, slave, PreferenceConstants.LEAVE_BLANK_LINES3);

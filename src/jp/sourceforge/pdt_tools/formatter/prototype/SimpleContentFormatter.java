@@ -198,6 +198,9 @@ public class SimpleContentFormatter implements IContentFormatter {
 		prefSpacerForShortcut = pref.getBoolean(PreferenceConstants.SPACER_FOR_SHORTCUT);
 		prefSpacerForShortcutClose = pref.getBoolean(PreferenceConstants.SPACER_FOR_SHORTCUT_CLOSE);
 		prefSpacerForCast = pref.getBoolean(PreferenceConstants.SPACER_FOR_CAST);
+		prefControlPreSpace = pref.getBoolean(PreferenceConstants.SPACER_AFTER_CONTROL);
+		prefCurlyOpenPreSpace = pref.getBoolean(PreferenceConstants.SPACER_BEFORE_CURLY);
+		prefCurlyClosePostSpace = pref.getBoolean(PreferenceConstants.SPACER_AFTER_CURLY);
 		prefLeaveBlankLines1 = pref.getBoolean(PreferenceConstants.LEAVE_BLANK_LINES1);
 		prefShrinkBlankLines1 = pref.getBoolean(PreferenceConstants.SHRINK_BLANK_LINES1);
 		prefLeaveBlankLines2 = pref.getBoolean(PreferenceConstants.LEAVE_BLANK_LINES2);
@@ -216,7 +219,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 		prefEquateEleIfToElseif = pref.getBoolean(PreferenceConstants.EQUATE_ELSE_IF_TO_ELSEIF);
 		prefSimpleStatementInOneLine = pref.getBoolean(PreferenceConstants.SIMPLE_STATEMENT_IN_ONE_LINE);
 		prefCompactEmptyBlock = pref.getBoolean(PreferenceConstants.COMPACT_EMPTY_BLOCK);
-
+		
 		if (debugDump) {
 			System.out.println("Region: " + region.getOffset() + "," + region.getLength());
 		}

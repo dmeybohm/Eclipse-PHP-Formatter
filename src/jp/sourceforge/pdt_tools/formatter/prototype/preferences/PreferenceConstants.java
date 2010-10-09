@@ -20,6 +20,9 @@ public class PreferenceConstants {
 	public final static String SPACER_FOR_SHORTCUT = "SpacerForShortcut";
 	public final static String SPACER_FOR_SHORTCUT_CLOSE = "SpacerForShortcutClose";
 	public final static String SPACER_FOR_CAST = "SpacerForCast";
+	public final static String SPACER_AFTER_CONTROL = "SpacerAfterControl";
+	public final static String SPACER_BEFORE_CURLY = "SpacerBeforeCurly";
+	public final static String SPACER_AFTER_CURLY = "SpacerAfterCurly";	
 	public final static String LEAVE_BLANK_LINES1 = "LeaveBlankLines1";
 	public final static String LEAVE_BLANK_LINES2 = "LeaveBlankLines2";
 	public final static String LEAVE_BLANK_LINES3 = "LeaveBlankLines3";
