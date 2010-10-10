@@ -95,9 +95,9 @@ public class SimpleContentFormatter implements IContentFormatter {
 	private boolean prefEquateEleIfToElseif;
 	private boolean prefSimpleStatementInOneLine;
 	private boolean prefCompactEmptyBlock;
-	private boolean prefControlPreSpace = false;
-	private boolean prefCurlyOpenPreSpace = false;
-	private boolean prefCurlyClosePostSpace = false;
+	private boolean prefSpacerAfterControl = false;
+	private boolean prefSpacerBeforeCurly = false;
+	private boolean prefSpacerAfterCurly = false;
 	private boolean debugDump = false;
 
 	public void format(IDocument document, IRegion region) {
@@ -198,9 +198,9 @@ public class SimpleContentFormatter implements IContentFormatter {
 		prefSpacerForShortcut = pref.getBoolean(PreferenceConstants.SPACER_FOR_SHORTCUT);
 		prefSpacerForShortcutClose = pref.getBoolean(PreferenceConstants.SPACER_FOR_SHORTCUT_CLOSE);
 		prefSpacerForCast = pref.getBoolean(PreferenceConstants.SPACER_FOR_CAST);
-		prefControlPreSpace = pref.getBoolean(PreferenceConstants.SPACER_AFTER_CONTROL);
-		prefCurlyOpenPreSpace = pref.getBoolean(PreferenceConstants.SPACER_BEFORE_CURLY);
-		prefCurlyClosePostSpace = pref.getBoolean(PreferenceConstants.SPACER_AFTER_CURLY);
+		prefSpacerAfterControl = pref.getBoolean(PreferenceConstants.SPACER_AFTER_CONTROL);
+		prefSpacerBeforeCurly = pref.getBoolean(PreferenceConstants.SPACER_BEFORE_CURLY);
+		prefSpacerAfterCurly = pref.getBoolean(PreferenceConstants.SPACER_AFTER_CURLY);
 		prefLeaveBlankLines1 = pref.getBoolean(PreferenceConstants.LEAVE_BLANK_LINES1);
 		prefShrinkBlankLines1 = pref.getBoolean(PreferenceConstants.SHRINK_BLANK_LINES1);
 		prefLeaveBlankLines2 = pref.getBoolean(PreferenceConstants.LEAVE_BLANK_LINES2);
@@ -738,7 +738,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 				if (reqOpenBlock) {
 					reqOpenBlock = false;
 					indentLevel++;
-					reqPreSpace = prefCurlyOpenPreSpace;
+					reqPreSpace = prefSpacerBeforeCurly;
 					reqPostNewLine = true;
 					if (scope.peek().type == PHPToken.PHP_SWITCH) {
 						if (prefIndentCaseBlock) {
@@ -803,7 +803,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 						if (prefNewLineForCatch) {
 							reqPostNewLine = true;
 						} else {
-							reqPostSpace = prefCurlyClosePostSpace;
+							reqPostSpace = prefSpacerAfterCurly;
 						}
 						scope.pop();
 						break;
@@ -823,7 +823,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 								if (prefNewLineForElse) {
 									reqPostNewLine = true;
 								} else {
-									reqPostSpace = prefCurlyClosePostSpace;
+									reqPostSpace = prefSpacerAfterCurly;
 								}
 								terminate = false;
 								//XXX 2010/04/09
@@ -1330,7 +1330,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 			case PHPToken.PHP_TRY:
 			case PHPToken.PHP_CATCH:
 				scope.push(new ScopeUnit(token.type));
-				reqPostSpace = prefControlPreSpace;
+				reqPostSpace = prefSpacerAfterControl;
 				if (prefNewLineForTryCatch) {
 					reqOpenBlockNL = true;
 				} else {
@@ -1380,7 +1380,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 				} else {
 					reqOpenBlock = true;
 				}
-				reqPostSpace = prefControlPreSpace;
+				reqPostSpace = prefSpacerAfterControl;
 				break;
 
 			case PHPToken.PHP_ELSEIF:
@@ -1430,7 +1430,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 						reqOpenBlockNL = true;
 					} else {
 						reqOpenBlock = true;
-						reqPostSpace = prefCurlyOpenPreSpace;
+						reqPostSpace = prefSpacerBeforeCurly;
 					}
 					scope.peek().fgSingle = false;
 				}
