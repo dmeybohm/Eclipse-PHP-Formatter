@@ -843,7 +843,7 @@ public class SimpleContentFormatter implements IContentFormatter {
 						break;
 					case PHPToken.PHP_DO:
 						indentLevel--;
-						reqPostSpace = true;
+						reqPostSpace = prefSpacerAfterCurly;
 						break;
 					case PHPToken.PHP_SWITCH:
 						if (prefIndentCaseBlock) {
@@ -1360,14 +1360,14 @@ public class SimpleContentFormatter implements IContentFormatter {
 					reqOpenBlockNL = true;
 				} else {
 					reqOpenBlock = true;
-					reqPostSpace = true;
+					reqPostSpace = prefSpacerBeforeCurly;
 				}
 				break;
 
 			case PHPToken.PHP_WHILE:
 				if (scope.peek().type == PHPToken.PHP_DO) {
 					scope.pop();
-					reqPostSpace = true;
+					reqPostSpace = prefSpacerAfterControl;
 					break;
 				}
 			case PHPToken.PHP_IF:
