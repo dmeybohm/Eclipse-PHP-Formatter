@@ -323,6 +323,15 @@ public class SimpleFormatterConfigurationBlockWrapper implements
 				PreferenceConstants.SPACER_FOR_SHORTCUT_CLOSE,
 				"Formatting.SpacerForShortcutClose.caption")); //$NON-NLS-1$
 		formattingOptions.add(new FormattingOption(optSpacer,
+				PreferenceConstants.SPACER_AFTER_CONTROL,
+				"Formatting.SpacerAfterControl.caption")); //$NON-NLS-1$
+		formattingOptions.add(new FormattingOption(optSpacer,
+				PreferenceConstants.SPACER_BEFORE_CURLY,
+				"Formatting.SpacerBeforeCurly.caption")); //$NON-NLS-1$
+		formattingOptions.add(new FormattingOption(optSpacer,
+				PreferenceConstants.SPACER_AFTER_CURLY,
+				"Formatting.SpacerAfterCurly.caption")); //$NON-NLS-1$
+		formattingOptions.add(new FormattingOption(optSpacer,
 				PreferenceConstants.SPACER_FOR_CAST,
 				"Formatting.SpacerForCast.caption")); //$NON-NLS-1$
 		expSpacer.setClient(optSpacer);
